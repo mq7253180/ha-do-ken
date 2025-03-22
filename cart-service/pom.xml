@@ -12,12 +12,17 @@
 	<dependencies>
 		<dependency>
 		    <groupId>com.quincy</groupId>
-		    <artifactId>quincy-jdbc-sharding</artifactId>
+		    <artifactId>quincy-jdbc-sharding-java21</artifactId>
 		    <version>2.0.0</version>
 		</dependency>
 		<dependency>
 		    <groupId>com.quincy</groupId>
-		    <artifactId>quincy-auth-server-sharding</artifactId>
+		    <artifactId>quincy-auth-common-java21</artifactId>
+		    <version>2.0.0</version>
+		</dependency>
+		<dependency>
+		    <groupId>com.quincy</groupId>
+		    <artifactId>quincy-redis-java21</artifactId>
 		    <version>2.0.0</version>
 		</dependency>
     </dependencies>
