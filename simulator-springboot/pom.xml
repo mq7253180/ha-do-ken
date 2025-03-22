@@ -155,38 +155,38 @@
 				<log.level>INFO</log.level>
 				<redis.nodes>r-2zezo1yk5sgy64e97z.redis.rds.aliyuncs.com:6379</redis.nodes>
 				<spring.data.redis.host>r-2zezo1yk5sgy64e97z.redis.rds.aliyuncs.com</spring.data.redis.host>
-				<spring.datasource.sharding.0.master>rm-2zeiznwv4301fif04yo.mysql.rds.aliyuncs.com:3306/merchant0</spring.datasource.sharding.0.master>
-				<spring.datasource.sharding.0.slave>rm-2zeiznwv4301fif04yo.mysql.rds.aliyuncs.com:3306/merchant0</spring.datasource.sharding.0.slave>
-				<spring.datasource.sharding.1.master>rm-2zeiznwv4301fif04yo.mysql.rds.aliyuncs.com:3306/merchant1</spring.datasource.sharding.1.master>
-				<spring.datasource.sharding.1.slave>rm-2zeiznwv4301fif04yo.mysql.rds.aliyuncs.com:3306/merchant1</spring.datasource.sharding.1.slave>
-				<spring.datasource.sharding.2.master>rm-2zeiznwv4301fif04yo.mysql.rds.aliyuncs.com:3306/merchant2</spring.datasource.sharding.2.master>
-				<spring.datasource.sharding.2.slave>rm-2zeiznwv4301fif04yo.mysql.rds.aliyuncs.com:3306/merchant2</spring.datasource.sharding.2.slave>
-				<spring.datasource.sharding.3.master>rm-2zeiznwv4301fif04yo.mysql.rds.aliyuncs.com:3306/merchant3</spring.datasource.sharding.3.master>
-				<spring.datasource.sharding.3.slave>rm-2zeiznwv4301fif04yo.mysql.rds.aliyuncs.com:3306/merchant3</spring.datasource.sharding.3.slave>
-				<spring.datasource.sharding.4.master>rm-2zeiznwv4301fif04yo.mysql.rds.aliyuncs.com:3306/merchant4</spring.datasource.sharding.4.master>
-				<spring.datasource.sharding.4.slave>rm-2zeiznwv4301fif04yo.mysql.rds.aliyuncs.com:3306/merchant4</spring.datasource.sharding.4.slave>
-				<spring.datasource.sharding.5.master>rm-2zeiznwv4301fif04yo.mysql.rds.aliyuncs.com:3306/merchant5</spring.datasource.sharding.5.master>
-				<spring.datasource.sharding.5.slave>rm-2zeiznwv4301fif04yo.mysql.rds.aliyuncs.com:3306/merchant5</spring.datasource.sharding.5.slave>
-				<spring.datasource.sharding.6.master>rm-2zeiznwv4301fif04yo.mysql.rds.aliyuncs.com:3306/merchant6</spring.datasource.sharding.6.master>
-				<spring.datasource.sharding.6.slave>rm-2zeiznwv4301fif04yo.mysql.rds.aliyuncs.com:3306/merchant6</spring.datasource.sharding.6.slave>
-				<spring.datasource.sharding.7.master>rm-2zeiznwv4301fif04yo.mysql.rds.aliyuncs.com:3306/merchant7</spring.datasource.sharding.7.master>
-				<spring.datasource.sharding.7.slave>rm-2zeiznwv4301fif04yo.mysql.rds.aliyuncs.com:3306/merchant7</spring.datasource.sharding.7.slave>
-				<spring.datasource.sharding.8.master>rm-2zeiznwv4301fif04yo.mysql.rds.aliyuncs.com:3306/merchant8</spring.datasource.sharding.8.master>
-				<spring.datasource.sharding.8.slave>rm-2zeiznwv4301fif04yo.mysql.rds.aliyuncs.com:3306/merchant8</spring.datasource.sharding.8.slave>
-				<spring.datasource.sharding.9.master>rm-2zeiznwv4301fif04yo.mysql.rds.aliyuncs.com:3306/merchant9</spring.datasource.sharding.9.master>
-				<spring.datasource.sharding.9.slave>rm-2zeiznwv4301fif04yo.mysql.rds.aliyuncs.com:3306/merchant9</spring.datasource.sharding.9.slave>
-				<spring.datasource.sharding.10.master>rm-2zeiznwv4301fif04yo.mysql.rds.aliyuncs.com:3306/merchant10</spring.datasource.sharding.10.master>
-				<spring.datasource.sharding.10.slave>rm-2zeiznwv4301fif04yo.mysql.rds.aliyuncs.com:3306/merchant10</spring.datasource.sharding.10.slave>
-				<spring.datasource.sharding.11.master>rm-2zeiznwv4301fif04yo.mysql.rds.aliyuncs.com:3306/merchant11</spring.datasource.sharding.11.master>
-				<spring.datasource.sharding.11.slave>rm-2zeiznwv4301fif04yo.mysql.rds.aliyuncs.com:3306/merchant11</spring.datasource.sharding.11.slave>
-				<spring.datasource.sharding.12.master>rm-2zeiznwv4301fif04yo.mysql.rds.aliyuncs.com:3306/merchant12</spring.datasource.sharding.12.master>
-				<spring.datasource.sharding.12.slave>rm-2zeiznwv4301fif04yo.mysql.rds.aliyuncs.com:3306/merchant12</spring.datasource.sharding.12.slave>
-				<spring.datasource.sharding.13.master>rm-2zeiznwv4301fif04yo.mysql.rds.aliyuncs.com:3306/merchant13</spring.datasource.sharding.13.master>
-				<spring.datasource.sharding.13.slave>rm-2zeiznwv4301fif04yo.mysql.rds.aliyuncs.com:3306/merchant13</spring.datasource.sharding.13.slave>
-				<spring.datasource.sharding.14.master>rm-2zeiznwv4301fif04yo.mysql.rds.aliyuncs.com:3306/merchant14</spring.datasource.sharding.14.master>
-				<spring.datasource.sharding.14.slave>rm-2zeiznwv4301fif04yo.mysql.rds.aliyuncs.com:3306/merchant14</spring.datasource.sharding.14.slave>
-				<spring.datasource.sharding.15.master>rm-2zeiznwv4301fif04yo.mysql.rds.aliyuncs.com:3306/merchant15</spring.datasource.sharding.15.master>
-				<spring.datasource.sharding.15.slave>rm-2zeiznwv4301fif04yo.mysql.rds.aliyuncs.com:3306/merchant15</spring.datasource.sharding.15.slave>
+				<spring.datasource.sharding.0.master>rm-2zeiznwv4301fif04yo.mysql.rds.aliyuncs.com:3306/chanchanmao0</spring.datasource.sharding.0.master>
+				<spring.datasource.sharding.0.slave>rm-2zeiznwv4301fif04yo.mysql.rds.aliyuncs.com:3306/chanchanmao0</spring.datasource.sharding.0.slave>
+				<spring.datasource.sharding.1.master>rm-2zeiznwv4301fif04yo.mysql.rds.aliyuncs.com:3306/chanchanmao1</spring.datasource.sharding.1.master>
+				<spring.datasource.sharding.1.slave>rm-2zeiznwv4301fif04yo.mysql.rds.aliyuncs.com:3306/chanchanmao1</spring.datasource.sharding.1.slave>
+				<spring.datasource.sharding.2.master>rm-2zeiznwv4301fif04yo.mysql.rds.aliyuncs.com:3306/chanchanmao2</spring.datasource.sharding.2.master>
+				<spring.datasource.sharding.2.slave>rm-2zeiznwv4301fif04yo.mysql.rds.aliyuncs.com:3306/chanchanmao2</spring.datasource.sharding.2.slave>
+				<spring.datasource.sharding.3.master>rm-2zeiznwv4301fif04yo.mysql.rds.aliyuncs.com:3306/chanchanmao3</spring.datasource.sharding.3.master>
+				<spring.datasource.sharding.3.slave>rm-2zeiznwv4301fif04yo.mysql.rds.aliyuncs.com:3306/chanchanmao3</spring.datasource.sharding.3.slave>
+				<spring.datasource.sharding.4.master>rm-2zeiznwv4301fif04yo.mysql.rds.aliyuncs.com:3306/chanchanmao4</spring.datasource.sharding.4.master>
+				<spring.datasource.sharding.4.slave>rm-2zeiznwv4301fif04yo.mysql.rds.aliyuncs.com:3306/chanchanmao4</spring.datasource.sharding.4.slave>
+				<spring.datasource.sharding.5.master>rm-2zeiznwv4301fif04yo.mysql.rds.aliyuncs.com:3306/chanchanmao5</spring.datasource.sharding.5.master>
+				<spring.datasource.sharding.5.slave>rm-2zeiznwv4301fif04yo.mysql.rds.aliyuncs.com:3306/chanchanmao5</spring.datasource.sharding.5.slave>
+				<spring.datasource.sharding.6.master>rm-2zeiznwv4301fif04yo.mysql.rds.aliyuncs.com:3306/chanchanmao6</spring.datasource.sharding.6.master>
+				<spring.datasource.sharding.6.slave>rm-2zeiznwv4301fif04yo.mysql.rds.aliyuncs.com:3306/chanchanmao6</spring.datasource.sharding.6.slave>
+				<spring.datasource.sharding.7.master>rm-2zeiznwv4301fif04yo.mysql.rds.aliyuncs.com:3306/chanchanmao7</spring.datasource.sharding.7.master>
+				<spring.datasource.sharding.7.slave>rm-2zeiznwv4301fif04yo.mysql.rds.aliyuncs.com:3306/chanchanmao7</spring.datasource.sharding.7.slave>
+				<spring.datasource.sharding.8.master>rm-2zeiznwv4301fif04yo.mysql.rds.aliyuncs.com:3306/chanchanmao8</spring.datasource.sharding.8.master>
+				<spring.datasource.sharding.8.slave>rm-2zeiznwv4301fif04yo.mysql.rds.aliyuncs.com:3306/chanchanmao8</spring.datasource.sharding.8.slave>
+				<spring.datasource.sharding.9.master>rm-2zeiznwv4301fif04yo.mysql.rds.aliyuncs.com:3306/chanchanmao9</spring.datasource.sharding.9.master>
+				<spring.datasource.sharding.9.slave>rm-2zeiznwv4301fif04yo.mysql.rds.aliyuncs.com:3306/chanchanmao9</spring.datasource.sharding.9.slave>
+				<spring.datasource.sharding.10.master>rm-2zeiznwv4301fif04yo.mysql.rds.aliyuncs.com:3306/chanchanmao10</spring.datasource.sharding.10.master>
+				<spring.datasource.sharding.10.slave>rm-2zeiznwv4301fif04yo.mysql.rds.aliyuncs.com:3306/chanchanmao10</spring.datasource.sharding.10.slave>
+				<spring.datasource.sharding.11.master>rm-2zeiznwv4301fif04yo.mysql.rds.aliyuncs.com:3306/chanchanmao11</spring.datasource.sharding.11.master>
+				<spring.datasource.sharding.11.slave>rm-2zeiznwv4301fif04yo.mysql.rds.aliyuncs.com:3306/chanchanmao11</spring.datasource.sharding.11.slave>
+				<spring.datasource.sharding.12.master>rm-2zeiznwv4301fif04yo.mysql.rds.aliyuncs.com:3306/chanchanmao12</spring.datasource.sharding.12.master>
+				<spring.datasource.sharding.12.slave>rm-2zeiznwv4301fif04yo.mysql.rds.aliyuncs.com:3306/chanchanmao12</spring.datasource.sharding.12.slave>
+				<spring.datasource.sharding.13.master>rm-2zeiznwv4301fif04yo.mysql.rds.aliyuncs.com:3306/chanchanmao13</spring.datasource.sharding.13.master>
+				<spring.datasource.sharding.13.slave>rm-2zeiznwv4301fif04yo.mysql.rds.aliyuncs.com:3306/chanchanmao13</spring.datasource.sharding.13.slave>
+				<spring.datasource.sharding.14.master>rm-2zeiznwv4301fif04yo.mysql.rds.aliyuncs.com:3306/chanchanmao14</spring.datasource.sharding.14.master>
+				<spring.datasource.sharding.14.slave>rm-2zeiznwv4301fif04yo.mysql.rds.aliyuncs.com:3306/chanchanmao14</spring.datasource.sharding.14.slave>
+				<spring.datasource.sharding.15.master>rm-2zeiznwv4301fif04yo.mysql.rds.aliyuncs.com:3306/chanchanmao15</spring.datasource.sharding.15.master>
+				<spring.datasource.sharding.15.slave>rm-2zeiznwv4301fif04yo.mysql.rds.aliyuncs.com:3306/chanchanmao15</spring.datasource.sharding.15.slave>
 			</properties>
 			<activation>
 				<activeByDefault>true</activeByDefault>
@@ -203,50 +203,42 @@
 				<log.level>WARN</log.level>
 				<redis.nodes>r-2zezo1yk5sgy64e97zpd.redis.rds.aliyuncs.com:6379</redis.nodes>
 				<spring.data.redis.host>r-2zezo1yk5sgy64e97zpd.redis.rds.aliyuncs.com</spring.data.redis.host>
-				<spring.datasource.sharding.0.master>rm-2zeiznwv4301fif04.mysql.rds.aliyuncs.com:3306/merchant0</spring.datasource.sharding.0.master>
-				<spring.datasource.sharding.0.slave>rm-2zeiznwv4301fif04.mysql.rds.aliyuncs.com:3306/merchant0</spring.datasource.sharding.0.slave>
-				<spring.datasource.sharding.1.master>rm-2zeiznwv4301fif04.mysql.rds.aliyuncs.com:3306/merchant1</spring.datasource.sharding.1.master>
-				<spring.datasource.sharding.1.slave>rm-2zeiznwv4301fif04.mysql.rds.aliyuncs.com:3306/merchant1</spring.datasource.sharding.1.slave>
-				<spring.datasource.sharding.2.master>rm-2zeiznwv4301fif04.mysql.rds.aliyuncs.com:3306/merchant2</spring.datasource.sharding.2.master>
-				<spring.datasource.sharding.2.slave>rm-2zeiznwv4301fif04.mysql.rds.aliyuncs.com:3306/merchant2</spring.datasource.sharding.2.slave>
-				<spring.datasource.sharding.3.master>rm-2zeiznwv4301fif04.mysql.rds.aliyuncs.com:3306/merchant3</spring.datasource.sharding.3.master>
-				<spring.datasource.sharding.3.slave>rm-2zeiznwv4301fif04.mysql.rds.aliyuncs.com:3306/merchant3</spring.datasource.sharding.3.slave>
-				<spring.datasource.sharding.4.master>rm-2zeiznwv4301fif04.mysql.rds.aliyuncs.com:3306/merchant4</spring.datasource.sharding.4.master>
-				<spring.datasource.sharding.4.slave>rm-2zeiznwv4301fif04.mysql.rds.aliyuncs.com:3306/merchant4</spring.datasource.sharding.4.slave>
-				<spring.datasource.sharding.5.master>rm-2zeiznwv4301fif04.mysql.rds.aliyuncs.com:3306/merchant5</spring.datasource.sharding.5.master>
-				<spring.datasource.sharding.5.slave>rm-2zeiznwv4301fif04.mysql.rds.aliyuncs.com:3306/merchant5</spring.datasource.sharding.5.slave>
-				<spring.datasource.sharding.6.master>rm-2zeiznwv4301fif04.mysql.rds.aliyuncs.com:3306/merchant6</spring.datasource.sharding.6.master>
-				<spring.datasource.sharding.6.slave>rm-2zeiznwv4301fif04.mysql.rds.aliyuncs.com:3306/merchant6</spring.datasource.sharding.6.slave>
-				<spring.datasource.sharding.7.master>rm-2zeiznwv4301fif04.mysql.rds.aliyuncs.com:3306/merchant7</spring.datasource.sharding.7.master>
-				<spring.datasource.sharding.7.slave>rm-2zeiznwv4301fif04.mysql.rds.aliyuncs.com:3306/merchant7</spring.datasource.sharding.7.slave>
-				<spring.datasource.sharding.8.master>rm-2zeiznwv4301fif04.mysql.rds.aliyuncs.com:3306/merchant8</spring.datasource.sharding.8.master>
-				<spring.datasource.sharding.8.slave>rm-2zeiznwv4301fif04.mysql.rds.aliyuncs.com:3306/merchant8</spring.datasource.sharding.8.slave>
-				<spring.datasource.sharding.9.master>rm-2zeiznwv4301fif04.mysql.rds.aliyuncs.com:3306/merchant9</spring.datasource.sharding.9.master>
-				<spring.datasource.sharding.9.slave>rm-2zeiznwv4301fif04.mysql.rds.aliyuncs.com:3306/merchant9</spring.datasource.sharding.9.slave>
-				<spring.datasource.sharding.10.master>rm-2zeiznwv4301fif04.mysql.rds.aliyuncs.com:3306/merchant10</spring.datasource.sharding.10.master>
-				<spring.datasource.sharding.10.slave>rm-2zeiznwv4301fif04.mysql.rds.aliyuncs.com:3306/merchant10</spring.datasource.sharding.10.slave>
-				<spring.datasource.sharding.11.master>rm-2zeiznwv4301fif04.mysql.rds.aliyuncs.com:3306/merchant11</spring.datasource.sharding.11.master>
-				<spring.datasource.sharding.11.slave>rm-2zeiznwv4301fif04.mysql.rds.aliyuncs.com:3306/merchant11</spring.datasource.sharding.11.slave>
-				<spring.datasource.sharding.12.master>rm-2zeiznwv4301fif04.mysql.rds.aliyuncs.com:3306/merchant12</spring.datasource.sharding.12.master>
-				<spring.datasource.sharding.12.slave>rm-2zeiznwv4301fif04.mysql.rds.aliyuncs.com:3306/merchant12</spring.datasource.sharding.12.slave>
-				<spring.datasource.sharding.13.master>rm-2zeiznwv4301fif04.mysql.rds.aliyuncs.com:3306/merchant13</spring.datasource.sharding.13.master>
-				<spring.datasource.sharding.13.slave>rm-2zeiznwv4301fif04.mysql.rds.aliyuncs.com:3306/merchant13</spring.datasource.sharding.13.slave>
-				<spring.datasource.sharding.14.master>rm-2zeiznwv4301fif04.mysql.rds.aliyuncs.com:3306/merchant14</spring.datasource.sharding.14.master>
-				<spring.datasource.sharding.14.slave>rm-2zeiznwv4301fif04.mysql.rds.aliyuncs.com:3306/merchant14</spring.datasource.sharding.14.slave>
-				<spring.datasource.sharding.15.master>rm-2zeiznwv4301fif04.mysql.rds.aliyuncs.com:3306/merchant15</spring.datasource.sharding.15.master>
-				<spring.datasource.sharding.15.slave>rm-2zeiznwv4301fif04.mysql.rds.aliyuncs.com:3306/merchant15</spring.datasource.sharding.15.slave>
+				<spring.datasource.sharding.0.master>rm-2zeiznwv4301fif04.mysql.rds.aliyuncs.com:3306/chanchanmao0</spring.datasource.sharding.0.master>
+				<spring.datasource.sharding.0.slave>rm-2zeiznwv4301fif04.mysql.rds.aliyuncs.com:3306/chanchanmao0</spring.datasource.sharding.0.slave>
+				<spring.datasource.sharding.1.master>rm-2zeiznwv4301fif04.mysql.rds.aliyuncs.com:3306/chanchanmao1</spring.datasource.sharding.1.master>
+				<spring.datasource.sharding.1.slave>rm-2zeiznwv4301fif04.mysql.rds.aliyuncs.com:3306/chanchanmao1</spring.datasource.sharding.1.slave>
+				<spring.datasource.sharding.2.master>rm-2zeiznwv4301fif04.mysql.rds.aliyuncs.com:3306/chanchanmao2</spring.datasource.sharding.2.master>
+				<spring.datasource.sharding.2.slave>rm-2zeiznwv4301fif04.mysql.rds.aliyuncs.com:3306/chanchanmao2</spring.datasource.sharding.2.slave>
+				<spring.datasource.sharding.3.master>rm-2zeiznwv4301fif04.mysql.rds.aliyuncs.com:3306/chanchanmao3</spring.datasource.sharding.3.master>
+				<spring.datasource.sharding.3.slave>rm-2zeiznwv4301fif04.mysql.rds.aliyuncs.com:3306/chanchanmao3</spring.datasource.sharding.3.slave>
+				<spring.datasource.sharding.4.master>rm-2zeiznwv4301fif04.mysql.rds.aliyuncs.com:3306/chanchanmao4</spring.datasource.sharding.4.master>
+				<spring.datasource.sharding.4.slave>rm-2zeiznwv4301fif04.mysql.rds.aliyuncs.com:3306/chanchanmao4</spring.datasource.sharding.4.slave>
+				<spring.datasource.sharding.5.master>rm-2zeiznwv4301fif04.mysql.rds.aliyuncs.com:3306/chanchanmao5</spring.datasource.sharding.5.master>
+				<spring.datasource.sharding.5.slave>rm-2zeiznwv4301fif04.mysql.rds.aliyuncs.com:3306/chanchanmao5</spring.datasource.sharding.5.slave>
+				<spring.datasource.sharding.6.master>rm-2zeiznwv4301fif04.mysql.rds.aliyuncs.com:3306/chanchanmao6</spring.datasource.sharding.6.master>
+				<spring.datasource.sharding.6.slave>rm-2zeiznwv4301fif04.mysql.rds.aliyuncs.com:3306/chanchanmao6</spring.datasource.sharding.6.slave>
+				<spring.datasource.sharding.7.master>rm-2zeiznwv4301fif04.mysql.rds.aliyuncs.com:3306/chanchanmao7</spring.datasource.sharding.7.master>
+				<spring.datasource.sharding.7.slave>rm-2zeiznwv4301fif04.mysql.rds.aliyuncs.com:3306/chanchanmao7</spring.datasource.sharding.7.slave>
+				<spring.datasource.sharding.8.master>rm-2zeiznwv4301fif04.mysql.rds.aliyuncs.com:3306/chanchanmao8</spring.datasource.sharding.8.master>
+				<spring.datasource.sharding.8.slave>rm-2zeiznwv4301fif04.mysql.rds.aliyuncs.com:3306/chanchanmao8</spring.datasource.sharding.8.slave>
+				<spring.datasource.sharding.9.master>rm-2zeiznwv4301fif04.mysql.rds.aliyuncs.com:3306/chanchanmao9</spring.datasource.sharding.9.master>
+				<spring.datasource.sharding.9.slave>rm-2zeiznwv4301fif04.mysql.rds.aliyuncs.com:3306/chanchanmao9</spring.datasource.sharding.9.slave>
+				<spring.datasource.sharding.10.master>rm-2zeiznwv4301fif04.mysql.rds.aliyuncs.com:3306/chanchanmao10</spring.datasource.sharding.10.master>
+				<spring.datasource.sharding.10.slave>rm-2zeiznwv4301fif04.mysql.rds.aliyuncs.com:3306/chanchanmao10</spring.datasource.sharding.10.slave>
+				<spring.datasource.sharding.11.master>rm-2zeiznwv4301fif04.mysql.rds.aliyuncs.com:3306/chanchanmao11</spring.datasource.sharding.11.master>
+				<spring.datasource.sharding.11.slave>rm-2zeiznwv4301fif04.mysql.rds.aliyuncs.com:3306/chanchanmao11</spring.datasource.sharding.11.slave>
+				<spring.datasource.sharding.12.master>rm-2zeiznwv4301fif04.mysql.rds.aliyuncs.com:3306/chanchanmao12</spring.datasource.sharding.12.master>
+				<spring.datasource.sharding.12.slave>rm-2zeiznwv4301fif04.mysql.rds.aliyuncs.com:3306/chanchanmao12</spring.datasource.sharding.12.slave>
+				<spring.datasource.sharding.13.master>rm-2zeiznwv4301fif04.mysql.rds.aliyuncs.com:3306/chanchanmao13</spring.datasource.sharding.13.master>
+				<spring.datasource.sharding.13.slave>rm-2zeiznwv4301fif04.mysql.rds.aliyuncs.com:3306/chanchanmao13</spring.datasource.sharding.13.slave>
+				<spring.datasource.sharding.14.master>rm-2zeiznwv4301fif04.mysql.rds.aliyuncs.com:3306/chanchanmao14</spring.datasource.sharding.14.master>
+				<spring.datasource.sharding.14.slave>rm-2zeiznwv4301fif04.mysql.rds.aliyuncs.com:3306/chanchanmao14</spring.datasource.sharding.14.slave>
+				<spring.datasource.sharding.15.master>rm-2zeiznwv4301fif04.mysql.rds.aliyuncs.com:3306/chanchanmao15</spring.datasource.sharding.15.master>
+				<spring.datasource.sharding.15.slave>rm-2zeiznwv4301fif04.mysql.rds.aliyuncs.com:3306/chanchanmao15</spring.datasource.sharding.15.slave>
 			</properties>
 		</profile>
 	</profiles>
 	<repositories>
-		<repository>
-            <id>mq</id><!--如果服务端是非匿名的，一定要和settings.xml中的serverId相对应-->
-            <name>My Nexus</name>
-            <url>https://nexus.maqiang777.com/repository/maven-releases/</url>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
 		<repository>
 			<id>aliyun</id>
 			<url>http://maven.aliyun.com/nexus/content/groups/public/</url>
