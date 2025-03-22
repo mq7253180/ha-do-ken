@@ -6,7 +6,7 @@
 	<name>Order Client</name>
 	<url>http://maven.apache.org</url>
 	<parent>
-		<groupId>com.chanchanmao</groupId>
+		<groupId>com.jep8566</groupId>
 		<artifactId>ha-do-ken</artifactId>
 		<version>1.0-SNAPSHOT</version>
 	</parent>
