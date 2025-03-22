@@ -1,4 +1,4 @@
-package com.chanchanmao;
+package com.xxx;
 
 import javax.annotation.PostConstruct;
 

@@ -1,4 +1,4 @@
-package com.chanchanmao;
+package com.xxx;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
@@ -18,9 +18,9 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import com.quincy.sdk.Constants;
 import com.quincy.sdk.annotation.auth.EnableAnnotationAuth;
 
-@MapperScan(basePackages = {Constants.PACKAGE_NAME_MAPPER, "com.honda.mapper"})
-@EntityScan(basePackages = {Constants.PACKAGE_NAME_ENTITY, "com.honda.entity"})
-@EnableJpaRepositories(basePackages = {Constants.PACKAGE_NAME_REPOSITORY, "com.honda.dao"})
+@MapperScan(basePackages = {Constants.PACKAGE_NAME_MAPPER, "com.xxx.mapper"})
+@EntityScan(basePackages = {Constants.PACKAGE_NAME_ENTITY, "com.xxx.entity"})
+@EnableJpaRepositories(basePackages = {Constants.PACKAGE_NAME_REPOSITORY, "com.xxx.dao"})
 @EnableTransactionManagement
 @EnableWebMvc
 @EnableJpaAuditing
