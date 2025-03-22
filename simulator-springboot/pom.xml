@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>simulator-springboot</artifactId>
+	<packaging>jar</packaging>
+	<name>Simulator Springboot</name>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>3.0.5</version>
+		<relativePath/>
+	</parent>
+	<properties>
+		<argLine>-Dfile.encoding=UTF-8</argLine>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<version.spring-cloud>4.0.2</version.spring-cloud>
+	</properties>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<jvmArguments>-Dfile.encoding=UTF-8</jvmArguments>
+					<executable>true</executable>
+					<!-- 包含引入的非maven库jar包 -->
+					<includeSystemScope>true</includeSystemScope>
+				</configuration>
+				<!-- 显示/actuator/info内容 -->
+				<executions>
+					<execution>
+						<goals>
+							<goal>repackage</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<!-- <version>3.11.0</version> -->
+				<configuration>
+					<source>21</source>
+					<target>21</target>
+					<compilerVersion>21</compilerVersion>
+					<encoding>UTF-8</encoding>
+					<compilerArgument>-Xlint:deprecation</compilerArgument>
+					<!-- <compilerArguments>
+						<extdirs>${pom.basedir}/src/main/lib</extdirs>
+					</compilerArguments> -->
+					<compilerArgs>
+						<compilerArg>
+							-parameters
+						</compilerArg>
+                    </compilerArgs>
+				</configuration>
+				<dependencies>
+					<dependency>
+						<groupId>org.codehaus.plexus</groupId>
+						<artifactId>plexus-compiler-javac</artifactId>
+						<version>2.11.1</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+			<plugin>
+				<artifactId>maven-resources-plugin</artifactId>
+				<configuration>
+					<encoding>utf-8</encoding>
+					<!-- springboot加了这个才能使profile生效 -->
+					<useDefaultDelimiters>true</useDefaultDelimiters>
+				</configuration>
+			</plugin>
+			<!--plugin>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<executions>
+					<execution>
+						<phase>generate-resources</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<tasks>
+								<echo>${project.basedir}</echo>
+							</tasks>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin-->
+			<plugin>
+				<groupId>com.spotify</groupId>
+				<artifactId>docker-maven-plugin</artifactId>
+				<version>1.2.2</version>
+				<configuration>
+					<imageName>registry.maqiang777.com/quincy/honda</imageName>
+					<imageTags>
+						<imageTag>1.0</imageTag>
+					</imageTags>
+					<forceTags>true</forceTags>
+
+					<!-- Dockerfile两种方式 -->
+					<!-- 方式一：插件自动生成 -->
+					<baseImage>openjdk:21</baseImage>
+					<workdir>/application/quincy</workdir>
+					<cmd>["java", "-version"]</cmd>
+					<entryPoint>["java", "-jar", "${project.build.finalName}.jar"]</entryPoint>
+					<maintainer>mq7253180@126.com</maintainer>
+
+					<!-- 方式二：手动编写 -->
+					<!-- 指定Dockerfile所在目录，会将该目录下所有文件复制到targetPath，所以将Dockerfile单独放在一个目录中，还可以将配置jvm参数的conf文件放在里面一起被复制过去 -->
+					<!-- <dockerDirectory>${pom.basedir}/docker</dockerDirectory> -->
+					<resources>
+						<!-- targetPath的根目录是工程目录中的target/docker目录，Dockerfile、jar和conf等文件都会被复制过来，并添加到镜像中的对应目录中 -->
+						<resource>
+							<!-- 复制jar文件 -->
+							<targetPath>/application/quincy</targetPath>
+							<directory>${project.build.directory}</directory>
+							<include>${project.build.finalName}.jar</include>
+						</resource>
+						<!-- 复制conf文件，方式二不需要 -->
+						<resource>
+							<targetPath>/application/quincy</targetPath>
+							<directory>${pom.basedir}/docker/application/quincy</directory>
+							<include>${project.build.finalName}.conf</include>
+						</resource>
+					</resources>
+					<!-- <dockerHost>http://47.93.89.0:2375</dockerHost>
+					<registryUrl>https://registry.maqiang777.com</registryUrl>
+					<pushImage>true</pushImage>
+					<pushImageTag>true</pushImageTag> -->
+					<serverId>docker-registry</serverId><!-- 对应maven的settings.xml中server节点的id节点的值，以获取用户名和密码 -->
+				</configuration>
+			</plugin>
+		</plugins>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+				<!-- <excludes>
+					<exclude>**/*.ftl</exclude>
+				</excludes> -->
+			</resource>
+ 		</resources>
+	</build>
+	<profiles>
+		<profile>
+			<id>dev</id>
+			<properties>
+				<env>dev</env>
+				<access-control-allow-origin>http://merchant.chanchanmao.com</access-control-allow-origin>
+				<auth.center>https://merchant.chanchanmao.com/index.html</auth.center>
+				<spring.pid.file>/quincy/tmp/honda.pid</spring.pid.file>
+				<path.log.logback>/quincy/tmp/logs/honda</path.log.logback>
+				<log.level>INFO</log.level>
+				<redis.nodes>r-2zezo1yk5sgy64e97z.redis.rds.aliyuncs.com:6379</redis.nodes>
+				<spring.data.redis.host>r-2zezo1yk5sgy64e97z.redis.rds.aliyuncs.com</spring.data.redis.host>
+				<spring.datasource.sharding.0.master>rm-2zeiznwv4301fif04yo.mysql.rds.aliyuncs.com:3306/merchant0</spring.datasource.sharding.0.master>
+				<spring.datasource.sharding.0.slave>rm-2zeiznwv4301fif04yo.mysql.rds.aliyuncs.com:3306/merchant0</spring.datasource.sharding.0.slave>
+				<spring.datasource.sharding.1.master>rm-2zeiznwv4301fif04yo.mysql.rds.aliyuncs.com:3306/merchant1</spring.datasource.sharding.1.master>
+				<spring.datasource.sharding.1.slave>rm-2zeiznwv4301fif04yo.mysql.rds.aliyuncs.com:3306/merchant1</spring.datasource.sharding.1.slave>
+				<spring.datasource.sharding.2.master>rm-2zeiznwv4301fif04yo.mysql.rds.aliyuncs.com:3306/merchant2</spring.datasource.sharding.2.master>
+				<spring.datasource.sharding.2.slave>rm-2zeiznwv4301fif04yo.mysql.rds.aliyuncs.com:3306/merchant2</spring.datasource.sharding.2.slave>
+				<spring.datasource.sharding.3.master>rm-2zeiznwv4301fif04yo.mysql.rds.aliyuncs.com:3306/merchant3</spring.datasource.sharding.3.master>
+				<spring.datasource.sharding.3.slave>rm-2zeiznwv4301fif04yo.mysql.rds.aliyuncs.com:3306/merchant3</spring.datasource.sharding.3.slave>
+				<spring.datasource.sharding.4.master>rm-2zeiznwv4301fif04yo.mysql.rds.aliyuncs.com:3306/merchant4</spring.datasource.sharding.4.master>
+				<spring.datasource.sharding.4.slave>rm-2zeiznwv4301fif04yo.mysql.rds.aliyuncs.com:3306/merchant4</spring.datasource.sharding.4.slave>
+				<spring.datasource.sharding.5.master>rm-2zeiznwv4301fif04yo.mysql.rds.aliyuncs.com:3306/merchant5</spring.datasource.sharding.5.master>
+				<spring.datasource.sharding.5.slave>rm-2zeiznwv4301fif04yo.mysql.rds.aliyuncs.com:3306/merchant5</spring.datasource.sharding.5.slave>
+				<spring.datasource.sharding.6.master>rm-2zeiznwv4301fif04yo.mysql.rds.aliyuncs.com:3306/merchant6</spring.datasource.sharding.6.master>
+				<spring.datasource.sharding.6.slave>rm-2zeiznwv4301fif04yo.mysql.rds.aliyuncs.com:3306/merchant6</spring.datasource.sharding.6.slave>
+				<spring.datasource.sharding.7.master>rm-2zeiznwv4301fif04yo.mysql.rds.aliyuncs.com:3306/merchant7</spring.datasource.sharding.7.master>
+				<spring.datasource.sharding.7.slave>rm-2zeiznwv4301fif04yo.mysql.rds.aliyuncs.com:3306/merchant7</spring.datasource.sharding.7.slave>
+				<spring.datasource.sharding.0.master>rm-2zeiznwv4301fif04yo.mysql.rds.aliyuncs.com:3306/merchant8</spring.datasource.sharding.0.master>
+				<spring.datasource.sharding.0.slave>rm-2zeiznwv4301fif04yo.mysql.rds.aliyuncs.com:3306/merchant8</spring.datasource.sharding.0.slave>
+				<spring.datasource.sharding.0.master>rm-2zeiznwv4301fif04yo.mysql.rds.aliyuncs.com:3306/merchant9</spring.datasource.sharding.0.master>
+				<spring.datasource.sharding.0.slave>rm-2zeiznwv4301fif04yo.mysql.rds.aliyuncs.com:3306/merchant9</spring.datasource.sharding.0.slave>
+				<spring.datasource.sharding.0.master>rm-2zeiznwv4301fif04yo.mysql.rds.aliyuncs.com:3306/merchant10</spring.datasource.sharding.0.master>
+				<spring.datasource.sharding.0.slave>rm-2zeiznwv4301fif04yo.mysql.rds.aliyuncs.com:3306/merchant10</spring.datasource.sharding.0.slave>
+				<spring.datasource.sharding.0.master>rm-2zeiznwv4301fif04yo.mysql.rds.aliyuncs.com:3306/merchant11</spring.datasource.sharding.0.master>
+				<spring.datasource.sharding.0.slave>rm-2zeiznwv4301fif04yo.mysql.rds.aliyuncs.com:3306/merchant11</spring.datasource.sharding.0.slave>
+				<spring.datasource.sharding.0.master>rm-2zeiznwv4301fif04yo.mysql.rds.aliyuncs.com:3306/merchant12</spring.datasource.sharding.0.master>
+				<spring.datasource.sharding.0.slave>rm-2zeiznwv4301fif04yo.mysql.rds.aliyuncs.com:3306/merchant12</spring.datasource.sharding.0.slave>
+				<spring.datasource.sharding.0.master>rm-2zeiznwv4301fif04yo.mysql.rds.aliyuncs.com:3306/merchant13</spring.datasource.sharding.0.master>
+				<spring.datasource.sharding.0.slave>rm-2zeiznwv4301fif04yo.mysql.rds.aliyuncs.com:3306/merchant13</spring.datasource.sharding.0.slave>
+				<spring.datasource.sharding.0.master>rm-2zeiznwv4301fif04yo.mysql.rds.aliyuncs.com:3306/merchant14</spring.datasource.sharding.0.master>
+				<spring.datasource.sharding.0.slave>rm-2zeiznwv4301fif04yo.mysql.rds.aliyuncs.com:3306/merchant14</spring.datasource.sharding.0.slave>
+				<spring.datasource.sharding.0.master>rm-2zeiznwv4301fif04yo.mysql.rds.aliyuncs.com:3306/merchant15</spring.datasource.sharding.0.master>
+				<spring.datasource.sharding.0.slave>rm-2zeiznwv4301fif04yo.mysql.rds.aliyuncs.com:3306/merchant15</spring.datasource.sharding.0.slave>
+			</properties>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+		</profile>
+		<profile>
+			<id>pro</id>
+			<properties>
+				<env>pro</env>
+				<access-control-allow-origin>http://merchant.chanchanmao.com</access-control-allow-origin>
+				<auth.center>https://merchant.chanchanmao.com/index.html</auth.center>
+				<spring.pid.file>/quincy/tmp/honda.pid</spring.pid.file>
+				<path.log.logback>/quincy/tmp/logs/honda</path.log.logback>
+				<log.level>WARN</log.level>
+				<redis.nodes>r-2zezo1yk5sgy64e97zpd.redis.rds.aliyuncs.com:6379</redis.nodes>
+				<spring.data.redis.host>r-2zezo1yk5sgy64e97zpd.redis.rds.aliyuncs.com</spring.data.redis.host>
+				<spring.datasource.sharding.0.master>rm-2zeiznwv4301fif04.mysql.rds.aliyuncs.com:3306/merchant0</spring.datasource.sharding.0.master>
+				<spring.datasource.sharding.0.slave>rm-2zeiznwv4301fif04.mysql.rds.aliyuncs.com:3306/merchant0</spring.datasource.sharding.0.slave>
+				<spring.datasource.sharding.1.master>rm-2zeiznwv4301fif04.mysql.rds.aliyuncs.com:3306/merchant1</spring.datasource.sharding.1.master>
+				<spring.datasource.sharding.1.slave>rm-2zeiznwv4301fif04.mysql.rds.aliyuncs.com:3306/merchant1</spring.datasource.sharding.1.slave>
+				<spring.datasource.sharding.2.master>rm-2zeiznwv4301fif04.mysql.rds.aliyuncs.com:3306/merchant2</spring.datasource.sharding.2.master>
+				<spring.datasource.sharding.2.slave>rm-2zeiznwv4301fif04.mysql.rds.aliyuncs.com:3306/merchant2</spring.datasource.sharding.2.slave>
+				<spring.datasource.sharding.3.master>rm-2zeiznwv4301fif04.mysql.rds.aliyuncs.com:3306/merchant3</spring.datasource.sharding.3.master>
+				<spring.datasource.sharding.3.slave>rm-2zeiznwv4301fif04.mysql.rds.aliyuncs.com:3306/merchant3</spring.datasource.sharding.3.slave>
+				<spring.datasource.sharding.4.master>rm-2zeiznwv4301fif04.mysql.rds.aliyuncs.com:3306/merchant4</spring.datasource.sharding.4.master>
+				<spring.datasource.sharding.4.slave>rm-2zeiznwv4301fif04.mysql.rds.aliyuncs.com:3306/merchant4</spring.datasource.sharding.4.slave>
+				<spring.datasource.sharding.5.master>rm-2zeiznwv4301fif04.mysql.rds.aliyuncs.com:3306/merchant5</spring.datasource.sharding.5.master>
+				<spring.datasource.sharding.5.slave>rm-2zeiznwv4301fif04.mysql.rds.aliyuncs.com:3306/merchant5</spring.datasource.sharding.5.slave>
+				<spring.datasource.sharding.6.master>rm-2zeiznwv4301fif04.mysql.rds.aliyuncs.com:3306/merchant6</spring.datasource.sharding.6.master>
+				<spring.datasource.sharding.6.slave>rm-2zeiznwv4301fif04.mysql.rds.aliyuncs.com:3306/merchant6</spring.datasource.sharding.6.slave>
+				<spring.datasource.sharding.7.master>rm-2zeiznwv4301fif04.mysql.rds.aliyuncs.com:3306/merchant7</spring.datasource.sharding.7.master>
+				<spring.datasource.sharding.7.slave>rm-2zeiznwv4301fif04.mysql.rds.aliyuncs.com:3306/merchant7</spring.datasource.sharding.7.slave>
+				<spring.datasource.sharding.0.master>rm-2zeiznwv4301fif04.mysql.rds.aliyuncs.com:3306/merchant8</spring.datasource.sharding.0.master>
+				<spring.datasource.sharding.0.slave>rm-2zeiznwv4301fif04.mysql.rds.aliyuncs.com:3306/merchant8</spring.datasource.sharding.0.slave>
+				<spring.datasource.sharding.0.master>rm-2zeiznwv4301fif04.mysql.rds.aliyuncs.com:3306/merchant9</spring.datasource.sharding.0.master>
+				<spring.datasource.sharding.0.slave>rm-2zeiznwv4301fif04.mysql.rds.aliyuncs.com:3306/merchant9</spring.datasource.sharding.0.slave>
+				<spring.datasource.sharding.0.master>rm-2zeiznwv4301fif04.mysql.rds.aliyuncs.com:3306/merchant10</spring.datasource.sharding.0.master>
+				<spring.datasource.sharding.0.slave>rm-2zeiznwv4301fif04.mysql.rds.aliyuncs.com:3306/merchant10</spring.datasource.sharding.0.slave>
+				<spring.datasource.sharding.0.master>rm-2zeiznwv4301fif04.mysql.rds.aliyuncs.com:3306/merchant11</spring.datasource.sharding.0.master>
+				<spring.datasource.sharding.0.slave>rm-2zeiznwv4301fif04.mysql.rds.aliyuncs.com:3306/merchant11</spring.datasource.sharding.0.slave>
+				<spring.datasource.sharding.0.master>rm-2zeiznwv4301fif04.mysql.rds.aliyuncs.com:3306/merchant12</spring.datasource.sharding.0.master>
+				<spring.datasource.sharding.0.slave>rm-2zeiznwv4301fif04.mysql.rds.aliyuncs.com:3306/merchant12</spring.datasource.sharding.0.slave>
+				<spring.datasource.sharding.0.master>rm-2zeiznwv4301fif04.mysql.rds.aliyuncs.com:3306/merchant13</spring.datasource.sharding.0.master>
+				<spring.datasource.sharding.0.slave>rm-2zeiznwv4301fif04.mysql.rds.aliyuncs.com:3306/merchant13</spring.datasource.sharding.0.slave>
+				<spring.datasource.sharding.0.master>rm-2zeiznwv4301fif04.mysql.rds.aliyuncs.com:3306/merchant14</spring.datasource.sharding.0.master>
+				<spring.datasource.sharding.0.slave>rm-2zeiznwv4301fif04.mysql.rds.aliyuncs.com:3306/merchant14</spring.datasource.sharding.0.slave>
+				<spring.datasource.sharding.0.master>rm-2zeiznwv4301fif04.mysql.rds.aliyuncs.com:3306/merchant15</spring.datasource.sharding.0.master>
+				<spring.datasource.sharding.0.slave>rm-2zeiznwv4301fif04.mysql.rds.aliyuncs.com:3306/merchant15</spring.datasource.sharding.0.slave>
+			</properties>
+		</profile>
+	</profiles>
+	<repositories>
+		<repository>
+            <id>mq</id><!--如果服务端是非匿名的，一定要和settings.xml中的serverId相对应-->
+            <name>My Nexus</name>
+            <url>https://nexus.maqiang777.com/repository/maven-releases/</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+		<repository>
+			<id>aliyun</id>
+			<url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>spring-milestones</id>
+			<name>Spring Milestones</name>
+			<url>https://repo.spring.io/libs-milestone</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+	<dependencyManagement>
+	    <dependencies>
+	        <!-- <dependency>
+	            <groupId>org.springframework.cloud</groupId>
+	            <artifactId>spring-cloud-dependencies</artifactId>
+	            <version>Finchley.SR2</version>
+	            <type>pom</type>
+	            <scope>import</scope>
+	        </dependency> -->
+	        <dependency>
+			    <groupId>org.projectlombok</groupId>
+			    <artifactId>lombok</artifactId>
+			    <version>1.18.32</version>
+			</dependency>
+	    </dependencies>
+	</dependencyManagement>
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+		    <groupId>org.mybatis.spring.boot</groupId>
+		    <artifactId>mybatis-spring-boot-starter</artifactId>
+		    <version>3.0.1</version>
+		    <exclusions>
+		    	<exclusion>
+		    		<groupId>org.apache.logging.log4j</groupId>
+		    		<artifactId>log4j-api</artifactId>
+		    	</exclusion>
+		    </exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-freemarker</artifactId>
+		</dependency>
+		<dependency>
+		    <groupId>org.springframework.cloud</groupId>
+		    <artifactId>spring-cloud-starter-bootstrap</artifactId>
+		    <version>${version.spring-cloud}</version>
+		</dependency>
+		<dependency>
+		    <groupId>com.chanchanmao</groupId>
+		    <artifactId>cart-service</artifactId>
+		    <version>1.0-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+		    <groupId>com.chanchanmao</groupId>
+		    <artifactId>order-service</artifactId>
+		    <version>1.0-SNAPSHOT</version>
+		</dependency>
+	</dependencies>
+</project>
