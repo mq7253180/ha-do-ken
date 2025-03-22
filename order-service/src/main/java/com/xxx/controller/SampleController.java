@@ -32,7 +32,7 @@ public class SampleController {
 	public List<TransactionDto> find1(@PathVariable(required = true, name = "shardingKey") long shardingKey, 
 			@PathVariable(required = true, name = "days") int days) {
 		/*
-		 * 查{days}天前的
+		 * 查最近{days}天的
 		 * 实际开发过程中shardingKey从session信息中获取，此处仅作演示
 		 */
 		return sampleService.findTransactions(shardingKey, new Date(System.currentTimeMillis()-(3600*24*days)));
