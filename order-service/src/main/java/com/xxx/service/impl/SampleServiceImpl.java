@@ -4,16 +4,22 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.quincy.core.redis.JedisSource;
+import com.quincy.core.redis.RedisConstants;
+import com.quincy.sdk.annotation.JedisSupport;
 import com.quincy.sdk.annotation.jdbc.ReadOnly;
 import com.quincy.sdk.annotation.sharding.ShardingKey;
 import com.xxx.dao.TransactionDao;
 import com.xxx.o.TransactionDto;
 import com.xxx.service.SampleService;
+
+import redis.clients.jedis.Jedis;
 
 @Service
 public class SampleServiceImpl implements SampleService {
@@ -60,5 +66,35 @@ public class SampleServiceImpl implements SampleService {
 		 * 如果想直接写简单SQL：也可以使用@JDBCDao、@ExecuteQuery、@ExecuteUpdate实现的框架
 		 */
 		return transactionDao.upateStatus(statusTo, id);
+	}
+	/**
+	 * 可以使用这种方式操作Redis，框架会自动注入jedis，并且会自动归还连接池，调用该方法时jedis传null即可，
+	 */
+	@JedisSupport
+	@Override
+	public String setAndReadRedis(Jedis jedis, String key, String value, long expireSeconds) {
+		jedis = jedisSource.get();
+		jedis.set(key, value);
+		return jedis.get(key);
+	}
+
+	@Autowired
+	@Qualifier(RedisConstants.BEAN_NAME_SYS_JEDIS_SOURCE)
+	private JedisSource jedisSource;
+	/**
+	 * 也可以使用最原始的方式操作redis
+	 */
+	@Override
+	public String setAndReadRedis(String key, String value, long expireSeconds) {
+		Jedis jedis = null;
+    	try {
+    		jedis = jedisSource.get();
+    		jedis.set(key, value);
+    		jedis.expire(key, expireSeconds);
+    		return jedis.get(key);
+    	} finally {
+    		if(jedis!=null)
+    			jedis.close();
+    	}
 	}
 }

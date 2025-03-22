@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -66,5 +67,23 @@ public class SampleController {
 			@PathVariable(required = true, name = "id")Long id, 
 			@PathVariable(required = true, name = "status")int status) {
 		return sampleService.upateStatus(shardingKey, id, status);
+	}
+
+	@Value("#{'${spring.redis.nodes}'.split(',')}")
+	private String[] _clusterNodes;
+
+	@GetMapping("/redis/a/{key}/{val}")
+	@ResponseBody
+	public String testRedis(@PathVariable(required = true, name = "key")String key, 
+			@PathVariable(required = true, name = "val")String val) {
+		System.out.println(_clusterNodes);
+		return sampleService.setAndReadRedis(null, key, val, 30);
+	}
+
+	@GetMapping("/redis/b/{key}/{val}")
+	@ResponseBody
+	public String testRedis2(@PathVariable(required = true, name = "key")String key, 
+			@PathVariable(required = true, name = "val")String val) {
+		return sampleService.setAndReadRedis(key, val, 30);
 	}
 }

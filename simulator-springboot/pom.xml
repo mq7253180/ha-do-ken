@@ -153,8 +153,8 @@
 				<spring.pid.file>/Users/maqiang/tmp/xxx.pid</spring.pid.file>
 				<path.log.logback>/Users/maqiang/tmp/logs/xxx</path.log.logback>
 				<log.level>INFO</log.level>
-				<redis.nodes>r-2zezo1yk5sgy64e97z.redis.rds.aliyuncs.com:6379</redis.nodes>
-				<spring.data.redis.host>r-2zezo1yk5sgy64e97z.redis.rds.aliyuncs.com</spring.data.redis.host>
+				<redis.nodes>r-2zezo1yk5sgy64e97zpd.redis.rds.aliyuncs.com:6379</redis.nodes>
+				<spring.data.redis.host>r-2zezo1yk5sgy64e97zpd.redis.rds.aliyuncs.com</spring.data.redis.host>
 				<spring.datasource.sharding.0.master>rm-2zeiznwv4301fif04yo.mysql.rds.aliyuncs.com:3306/chanchanmao0</spring.datasource.sharding.0.master>
 				<spring.datasource.sharding.0.slave>rm-2zeiznwv4301fif04yo.mysql.rds.aliyuncs.com:3306/chanchanmao0</spring.datasource.sharding.0.slave>
 				<spring.datasource.sharding.1.master>rm-2zeiznwv4301fif04yo.mysql.rds.aliyuncs.com:3306/chanchanmao1</spring.datasource.sharding.1.master>
@@ -201,8 +201,8 @@
 				<spring.pid.file>/quincy/tmp/xxx.pid</spring.pid.file>
 				<path.log.logback>/quincy/tmp/logs/xxx</path.log.logback>
 				<log.level>WARN</log.level>
-				<redis.nodes>r-2zezo1yk5sgy64e97zpd.redis.rds.aliyuncs.com:6379</redis.nodes>
-				<spring.data.redis.host>r-2zezo1yk5sgy64e97zpd.redis.rds.aliyuncs.com</spring.data.redis.host>
+				<redis.nodes>r-2zezo1yk5sgy64e97z.redis.rds.aliyuncs.com:6379</redis.nodes>
+				<spring.data.redis.host>r-2zezo1yk5sgy64e97z.redis.rds.aliyuncs.com</spring.data.redis.host>
 				<spring.datasource.sharding.0.master>rm-2zeiznwv4301fif04.mysql.rds.aliyuncs.com:3306/chanchanmao0</spring.datasource.sharding.0.master>
 				<spring.datasource.sharding.0.slave>rm-2zeiznwv4301fif04.mysql.rds.aliyuncs.com:3306/chanchanmao0</spring.datasource.sharding.0.slave>
 				<spring.datasource.sharding.1.master>rm-2zeiznwv4301fif04.mysql.rds.aliyuncs.com:3306/chanchanmao1</spring.datasource.sharding.1.master>
