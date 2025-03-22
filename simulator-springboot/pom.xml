@@ -148,10 +148,10 @@
 			<id>dev</id>
 			<properties>
 				<env>dev</env>
-				<access-control-allow-origin>http://merchant.chanchanmao.com</access-control-allow-origin>
-				<auth.center>https://merchant.chanchanmao.com/index.html</auth.center>
-				<spring.pid.file>/quincy/tmp/honda.pid</spring.pid.file>
-				<path.log.logback>/quincy/tmp/logs/honda</path.log.logback>
+				<access-control-allow-origin>http://127.0.0.1:9527</access-control-allow-origin>
+				<auth.center>http://127.0.0.1:12081</auth.center>
+				<spring.pid.file>/Users/maqiang/tmp/xxx.pid</spring.pid.file>
+				<path.log.logback>/Users/maqiang/tmp/logs/xxx</path.log.logback>
 				<log.level>INFO</log.level>
 				<redis.nodes>r-2zezo1yk5sgy64e97z.redis.rds.aliyuncs.com:6379</redis.nodes>
 				<spring.data.redis.host>r-2zezo1yk5sgy64e97z.redis.rds.aliyuncs.com</spring.data.redis.host>
@@ -196,10 +196,10 @@
 			<id>pro</id>
 			<properties>
 				<env>pro</env>
-				<access-control-allow-origin>http://merchant.chanchanmao.com</access-control-allow-origin>
-				<auth.center>https://merchant.chanchanmao.com/index.html</auth.center>
-				<spring.pid.file>/quincy/tmp/honda.pid</spring.pid.file>
-				<path.log.logback>/quincy/tmp/logs/honda</path.log.logback>
+				<access-control-allow-origin>https://demo.jep8566.com</access-control-allow-origin>
+				<auth.center>https://jep8566.com</auth.center>
+				<spring.pid.file>/quincy/tmp/xxx.pid</spring.pid.file>
+				<path.log.logback>/quincy/tmp/logs/xxx</path.log.logback>
 				<log.level>WARN</log.level>
 				<redis.nodes>r-2zezo1yk5sgy64e97zpd.redis.rds.aliyuncs.com:6379</redis.nodes>
 				<spring.data.redis.host>r-2zezo1yk5sgy64e97zpd.redis.rds.aliyuncs.com</spring.data.redis.host>
