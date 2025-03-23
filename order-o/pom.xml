@@ -10,11 +10,4 @@
 		<artifactId>ha-do-ken</artifactId>
 		<version>1.0-SNAPSHOT</version>
 	</parent>
-	<dependencies>
-		<dependency>
-		    <groupId>org.springframework.cloud</groupId>
-		    <artifactId>spring-cloud-openfeign-core</artifactId>
-		    <version>4.0.2</version>
-		</dependency>
-	</dependencies>
 </project>
