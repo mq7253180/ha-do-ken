@@ -75,6 +75,7 @@ public class SampleServiceImpl implements SampleService {
 	public String setAndReadRedis(Jedis jedis, String key, String value, long expireSeconds) {
 		jedis = jedisSource.get();
 		jedis.set(key, value);
+		jedis.expire(value, expireSeconds);
 		return jedis.get(key);
 	}
 

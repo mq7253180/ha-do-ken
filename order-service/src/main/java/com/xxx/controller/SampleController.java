@@ -69,14 +69,10 @@ public class SampleController {
 		return sampleService.upateStatus(shardingKey, id, status);
 	}
 
-	@Value("#{'${spring.redis.nodes}'.split(',')}")
-	private String[] _clusterNodes;
-
 	@GetMapping("/redis/a/{key}/{val}")
 	@ResponseBody
 	public String testRedis(@PathVariable(required = true, name = "key")String key, 
 			@PathVariable(required = true, name = "val")String val) {
-		System.out.println(_clusterNodes);
 		return sampleService.setAndReadRedis(null, key, val, 30);
 	}
 
