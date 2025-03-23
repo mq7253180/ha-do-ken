@@ -31,9 +31,9 @@ import com.quincy.sdk.annotation.auth.EnableAnnotationAuth;
         DataSourceAutoConfiguration.class
 })*/
 @ComponentScan(basePackages= {"com.*"})
-public class Launcher {
+public class Starter {
     public static void main(String[] args) {
-    	SpringApplication sa = new SpringApplication(Launcher.class);
+    	SpringApplication sa = new SpringApplication(Starter.class);
         sa.addListeners(new ApplicationPidFileWriter());
         sa.run(args);
     }
