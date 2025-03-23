@@ -81,6 +81,7 @@
 		</repository>
 	</repositories>
 	<modules>
+		<module>order-o</module>
 		<module>order-client</module>
 		<module>order-service</module>
 		<module>cart-service</module>

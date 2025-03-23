@@ -2,8 +2,8 @@
 <project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<modelVersion>4.0.0</modelVersion>
-	<artifactId>order-client</artifactId>
-	<name>Order Client</name>
+	<artifactId>order-o</artifactId>
+	<name>Order VO and PO</name>
 	<url>http://maven.apache.org</url>
 	<parent>
 		<groupId>com.jep8566</groupId>
@@ -12,9 +12,9 @@
 	</parent>
 	<dependencies>
 		<dependency>
-		    <groupId>com.jep8566</groupId>
-		    <artifactId>order-o</artifactId>
-		    <version>1.0-SNAPSHOT</version>
+		    <groupId>org.springframework.cloud</groupId>
+		    <artifactId>spring-cloud-openfeign-core</artifactId>
+		    <version>4.0.2</version>
 		</dependency>
 	</dependencies>
 </project>
