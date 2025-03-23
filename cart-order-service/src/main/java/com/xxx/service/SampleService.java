@@ -8,6 +8,7 @@ import com.xxx.o.TransactionDto;
 import redis.clients.jedis.Jedis;
 
 public interface SampleService {
+	public void optById(Long id, String arg);
 	public List<TransactionDto> findTransactions(long shardingKey, Date createFrom);
 	public List<TransactionDto> findTransactions(long shardingKey, int status);
 	public TransactionDto findTransaction(long shardingKey, Long id);

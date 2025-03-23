@@ -30,14 +30,23 @@ public class SampleServiceImpl implements SampleService {
 	 * 必须传@ShardingKey注解的long型参数才能路由到指定分片
 	 * 如果不是直接传的路由键，而是id需要加上snowFlake = true，框架会从id中通过雪花算法提取真正的shardingKey：@ShardingKey(snowFlake = true)
 	 * 操作数据库必须包上这一层，否则无法正确路由
+	 * 
+	 * 需要框架从id中提取shardingKey的情阅：注解中加上snowFlake = true
 	 */
-	@ReadOnly
+	@Transactional(isolation = Isolation.READ_COMMITTED, propagation = Propagation.REQUIRED, rollbackFor = Throwable.class)
 	@Override
-	public List<TransactionDto> findTransactions(@ShardingKey long shardingKey, Date createFrom) {
+	public void optById(@ShardingKey(snowFlake = true) Long id, String arg) {
 		/*
 		 * 这里可以使用JPA或MyBatis，没有要求
 		 * 如果想直接写简单SQL：也可以使用@JDBCDao、@ExecuteQuery、@ExecuteUpdate实现的框架
 		 */
+	}
+	/**
+	 * 从session中直接获取shardingKey时可以不用加snowFlake = true
+	 */
+	@ReadOnly
+	@Override
+	public List<TransactionDto> findTransactions(@ShardingKey long shardingKey, Date createFrom) {
 		return transactionDao.find(createFrom);
 	}
 
@@ -52,12 +61,7 @@ public class SampleServiceImpl implements SampleService {
 	public TransactionDto findTransaction(@ShardingKey long shardingKey, Long id) {
 		return transactionDao.find(id);
 	}
-	/**
-	 * 必须加@Transactional或@ReadOnly注解
-	 * 必须传@ShardingKey注解的long型参数才能路由到指定分片
-	 * 如果不是直接传的路由键，而是id需要加上snowFlake = true，框架会从id中通过雪花算法提取真正的shardingKey：@ShardingKey(snowFlake = true)
-	 * 操作数据库必须包上这一层，否则无法正确路由
-	 */
+
 	@Transactional(isolation = Isolation.READ_COMMITTED, propagation = Propagation.REQUIRED, rollbackFor = Throwable.class)
 	@Override
 	public int upateStatus(@ShardingKey long shardingKey, Long id, int statusTo) {
@@ -75,7 +79,7 @@ public class SampleServiceImpl implements SampleService {
 	public String setAndReadRedis(Jedis jedis, String key, String value, long expireSeconds) {
 		jedis = jedisSource.get();
 		jedis.set(key, value);
-		jedis.expire(value, expireSeconds);
+		jedis.expire(key, expireSeconds);
 		return jedis.get(key);
 	}
 
