@@ -83,8 +83,7 @@
 	<modules>
 		<module>order-o</module>
 		<module>order-client</module>
-		<module>order-service</module>
-		<module>cart-service</module>
+		<module>cart-order-service</module>
 		<module>simulator-springboot</module>
 	</modules>
 </project>
