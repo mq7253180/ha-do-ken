@@ -315,7 +315,12 @@
 		</dependency>
 		<dependency>
 		    <groupId>com.jep8566</groupId>
-		    <artifactId>cart-order-service</artifactId>
+		    <artifactId>merchat-cart-order-controller</artifactId>
+		    <version>1.0-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+		    <groupId>com.jep8566</groupId>
+		    <artifactId>wechat-cart-order-controller</artifactId>
 		    <version>1.0-SNAPSHOT</version>
 		</dependency>
 	</dependencies>

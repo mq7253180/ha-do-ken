@@ -84,6 +84,8 @@
 		<module>order-o</module>
 		<module>order-client</module>
 		<module>cart-order-service</module>
+		<module>merchat-cart-order-controller</module>
+		<module>wechat-cart-order-controller</module>
 		<module>simulator-springboot</module>
 	</modules>
 </project>
