@@ -3,7 +3,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>merchant-cart-order-controller</artifactId>
-	<name>Cart and Order Controller</name>
+	<name>Cart and Order Controller for WeChat</name>
 	<parent>
 		<groupId>com.jep8566</groupId>
 		<artifactId>ha-do-ken</artifactId>
